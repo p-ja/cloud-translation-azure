@@ -1,0 +1,46 @@
+<h1 data-number="1" id="tłumacze"><span class="header-section-number">1</span> Tłumacze</h1>
+<h2 data-number="1.1" id="wstęp"><span class="header-section-number">1.1</span> Wstęp</h2>
+<p>Jako przykład zaimplementowane jest wywołanie usługi <code>Azure Translator</code>.</p>
+<figure>
+<img src="src/main/resources/azure.png" alt="" /><figcaption>Diagram klas dla Azure</figcaption>
+</figure>
+<p>Klasa <code>AzureTranslator</code> zawiera kod integrujący się z usługą chmurową w Azure z wykorzystaniem REST API.</p>
+<p>Klasa <code>AzureTranslatorTest</code> zawiera test integracyjny dla odpowiadającej mu klasy. Jest to jeden przypadek typu <em>happy path</em>.</p>
+<p>Uwierzytelnianie odbywa się za pomocą klucza uwierzytelniającego. Aplikacja wczytuje ten klucz ze zmiennej środowiskowej <code>AZURE_TRANSLATOR_KEY</code>.</p>
+<h2 data-number="1.2" id="wymagania"><span class="header-section-number">1.2</span> Wymagania</h2>
+<p>Wymagania poniżej dotyczą wszystkich zadań (patrz niżej).</p>
+<ol type="1">
+<li>Klucze uwierzytelniające nie mogą w żadnym momencie być umieszczone w kodzie aplikacji.</li>
+<li>Poprawność działania kodu powinna być sprawdzana testem integracyjnym.</li>
+</ol>
+<p>Dokładne wymagania znajdują się w opisie poszczególnych zadań.</p>
+<h2 data-number="1.3" id="zadania"><span class="header-section-number">1.3</span> Zadania</h2>
+<h3 data-number="1.3.1" id="uruchomić-aplikację-przykładową."><span class="header-section-number">1.3.1</span> Uruchomić aplikację przykładową.</h3>
+<p>Skompilować i uruchomić kod.</p>
+<p>Ustawić zmienną środowiskową <code>AZURE_TRANSLATOR_KEY</code> zawierającą klucz uwierzytelniający do usługi (wartość klucza u prowadzącego).</p>
+<p>Uruchomić ponownie - test powinien zakończyć się sukcesem.</p>
+<h3 data-number="1.3.2" id="na-bazie-przykładowej-aplikacji-dla-azure-stworzyć-aplikację-dla-deepl."><span class="header-section-number">1.3.2</span> Na bazie przykładowej aplikacji dla Azure, stworzyć aplikację dla DeepL.</h3>
+<p>Wykorzystać REST API.</p>
+<p>Wykorzystać to samo zdanie testowe.</p>
+<p>Skonfigurować uwierzytelnianie za pomocą zmiennej środowiskowej (np. <code>DEEPL_KEY</code>). Wartość zmiennej można uzyskać u prowadzącego.</p>
+<p>Stworzyć testy integracyjne korzystające z tego samego zdania wejściowego, dla przynajmniej dwóch różnych języków wyjściowych.</p>
+<h3 data-number="1.3.3" id="wykorzystując-sdk-stworzyć-aplikację-dla-aws-translate."><span class="header-section-number">1.3.3</span> Wykorzystując SDK, stworzyć aplikację dla AWS Translate.</h3>
+<p>Nie korzystać z REST API, ale z AWS SDK.</p>
+<p>Wykorzystać to samo zdanie testowe.</p>
+<p>Skonfigurować uwierztelnianie za pomocą zmiennych środowiskowych. Nazwy zmiennych znaleźć w dokumentacji. Wartości zmiennych - od prowadzącego.</p>
+<h3 data-number="1.3.4" id="korzystając-z-aws-translate-przetłumaczyć-dłuższy-tekst"><span class="header-section-number">1.3.4</span> Korzystając z AWS Translate przetłumaczyć dłuższy tekst</h3>
+<p>Pobrać notkę biograficzną na temat Adama Mickiewicza przez REST API serwisu wolnelektury.pl</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">curl</span> -L https://wolnelektury.pl/api/authors/adam-mickiewicz</span></code></pre></div>
+<p>Jeśli korzystasz z <code>curl</code>, co się stanie, gdy nie będzie flagi <code>-L</code> i dlaczego?</p>
+<p>Przetłumaczyć notatkę na inny dowolny język.</p>
+<p><strong>UWAGA</strong>: Jako język źródłowy należy wskazać język polski (<code>pl</code>).</p>
+<p>Zwróć uwagę, że część tytułów dzieł Mickiewicza jest przetłumaczona a część nie.</p>
+<p>Korzystając z flagi <code>do not translate</code>, wyłączyć tłumaczenie tytułów. Dla uproszczenia, możesz założyć, że wszystkie teksty w tagu <code>&lt;i&gt;</code> mogą nie być tłumaczone.</p>
+<p>Przeanalizować uzyskane tłumaczenie. Co jeszce można by poprawić i w jaki sposób?</p>
+<h3 data-number="1.3.5" id="przetłumaczyć-notatkę-o-a.-mickiewiczu-za-pomocą-deepl"><span class="header-section-number">1.3.5</span> Przetłumaczyć notatkę o A. Mickiewiczu za pomocą DeepL</h3>
+<p>Przetłumaczyć notatkę za pomocą DeepL.</p>
+<p>Porównać rezultat z AWS Translate.</p>
+<h3 data-number="1.3.6" id="opcjonalnie"><span class="header-section-number">1.3.6</span> (Opcjonalnie)</h3>
+<p>Napisać aplikację pobierającą “bezużyteczny fakt dnia” z serwisu Useless facts.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">curl</span> https://uselessfacts.jsph.pl/today.json?language=de</span></code></pre></div>
+<p>Korzystając z dowolnej usługi do tłumaczeń przetłumaczyć pobrany fakt na dowolny wspierany język.</p>
